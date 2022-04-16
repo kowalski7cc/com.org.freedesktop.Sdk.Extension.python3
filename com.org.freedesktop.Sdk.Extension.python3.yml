@@ -1,0 +1,84 @@
+app-id: org.freedesktop.Sdk.Extension.python3
+branch: '21.08'
+runtime: org.freedesktop.Sdk
+runtime-version: '21.08'
+sdk: org.freedesktop.Sdk
+build-extension: true
+separate-locales: false
+appstream-compose: false
+build-options:
+  prefix: /usr/lib/sdk/python3
+  prepend-path: /usr/lib/sdk/python3/bin
+  prepend-ld-library-path: /usr/lib/sdk/python3/lib
+  strip: true
+  
+modules:
+  - name: tcl
+    buildsystem: autotools
+    subdir: unix
+    post-install:
+      - chmod 755 /usr/lib/sdk/python3/lib/libtcl*.so
+    cleanup:
+      - /bin
+      - /lib/pkgconfig
+      - /man
+    sources:
+      - type: archive
+        url: https://prdownloads.sourceforge.net/tcl/tcl8.6.12-src.tar.gz
+        sha256: 26c995dd0f167e48b11961d891ee555f680c175f7173ff8cb829f4ebcde4c1a6
+        x-checker-data:
+          type: anitya
+          project-id: 4941
+          stable-only: true
+          url-template: https://prdownloads.sourceforge.net/tcl/tcl$version-src.tar.gz
+          
+  - name: tk
+    buildsystem: autotools
+    subdir: unix
+    post-install:
+      - chmod 755 /usr/lib/sdk/python3/lib/libtk*.so
+    cleanup:
+      - /bin
+      - /lib/pkgconfig
+      - /man
+    sources:
+      - type: archive
+        url: https://prdownloads.sourceforge.net/tcl/tk8.6.12-src.tar.gz
+        sha256: 12395c1f3fcb6bed2938689f797ea3cdf41ed5cb6c4766eec8ac949560310630
+        x-checker-data:
+          type: anitya
+          project-id: 11426
+          stable-only: true
+          url-template: https://prdownloads.sourceforge.net/tcl/tk$version-src.tar.gz
+
+  - shared-modules/pygtk/pygtk.json
+
+  - name: python
+    config-opts:
+      - --enable-optimizations
+      - --with-lto
+      - --enable-shared
+    sources:
+      - type: archive
+        url: https://www.python.org/ftp/python/3.10.4/Python-3.10.4.tar.xz
+        sha512: 6c9aeecddc55c7896b2e8527fca131c7b2b6127d56ce1a001ccedfebf590334e0c0bb7c517ed3cf1da3c1910e002552b56aa7e03eeb672f42ff0bd8150799113
+        x-checker-data:
+          type: anitya
+          stable-only: true
+          project-id: 13254
+          url-template: https://www.python.org/ftp/python/$version/Python-$version.tar.xz
+      - type: script
+        commands:
+          - export PATH=$PATH:/usr/lib/sdk/python3/bin
+        dest-filename: enable.sh
+      - type: file
+        path: com.org.freedesktop.Sdk.Extension.python3.idle3.appdata.xml
+      - type: file
+        path: com.org.freedesktop.Sdk.Extension.python3.idle3.desktop
+    post-install:
+      - install -Dm644 /usr/lib/sdk/python3/lib/python3.10/idlelib/Icons/idle_16.png ${FLATPAK_DEST}/share/icons/hicolor/16x16/apps/${FLATPAK_ID}.png
+      - install -Dm644 /usr/lib/sdk/python3/lib/python3.10/idlelib/Icons/idle_32.png ${FLATPAK_DEST}/share/icons/hicolor/32x32/apps/${FLATPAK_ID}.png
+      - install -Dm644 /usr/lib/sdk/python3/lib/python3.10/idlelib/Icons/idle_48.png ${FLATPAK_DEST}/share/icons/hicolor/48x48/apps/${FLATPAK_ID}.png
+      - install -Dm644 /usr/lib/sdk/python3/lib/python3.10/idlelib/Icons/idle_256.png ${FLATPAK_DEST}/share/icons/hicolor/256x256/apps/${FLATPAK_ID}.png
+      - install -Dm644 com.org.freedesktop.Sdk.Extension.python3.idle3.appdata.xml ${FLATPAK_DEST}/share/appdata/
+      - install -Dm644 com.org.freedesktop.Sdk.Extension.python3.idle3.desktop ${FLATPAK_DEST}/share/applications/
