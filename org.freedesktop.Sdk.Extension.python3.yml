@@ -35,6 +35,9 @@ modules:
   - name: tk
     buildsystem: autotools
     subdir: unix
+    build-options:
+      cflags: -I/usr/lib/sdk/python3/include
+      cxxflags: -I/usr/lib/sdk/python3/include
     post-install:
       - chmod 755 /usr/lib/sdk/python3/lib/libtk*.so
     cleanup:
