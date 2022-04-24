@@ -6,10 +6,12 @@ sdk: org.freedesktop.Sdk
 build-extension: true
 separate-locales: false
 appstream-compose: false
+command: /usr/lib/sdk/python3/bin/python3
 build-options:
   prefix: /usr/lib/sdk/python3
   prepend-path: /usr/lib/sdk/python3/bin
   prepend-ld-library-path: /usr/lib/sdk/python3/lib
+  prepend-pkg-config-path: /lib/pkgconfig
   strip: true
 
 modules:
