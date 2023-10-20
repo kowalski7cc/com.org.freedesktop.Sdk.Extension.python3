@@ -59,6 +59,9 @@ modules:
       - --enable-optimizations
       - --with-lto
       - --enable-shared
+    build-commands:
+      - "mkdir -p /usr/lib/sdk/python3/share/appdata/"
+      - "mkdir -p /usr/lib/sdk/python3/share/applications/"
     sources:
       - type: archive
         url: https://www.python.org/ftp/python/3.10.4/Python-3.10.4.tar.xz
