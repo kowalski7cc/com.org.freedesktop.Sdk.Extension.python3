@@ -82,9 +82,9 @@ modules:
       - type: file
         path: org.freedesktop.Sdk.Extension.python3.idle3.desktop
     post-install:
-      - install -Dm644 /usr/lib/sdk/python3/lib/python3.10/idlelib/Icons/idle_16.png ${FLATPAK_DEST}/share/icons/hicolor/16x16/apps/${FLATPAK_ID}.png
-      - install -Dm644 /usr/lib/sdk/python3/lib/python3.10/idlelib/Icons/idle_32.png ${FLATPAK_DEST}/share/icons/hicolor/32x32/apps/${FLATPAK_ID}.png
-      - install -Dm644 /usr/lib/sdk/python3/lib/python3.10/idlelib/Icons/idle_48.png ${FLATPAK_DEST}/share/icons/hicolor/48x48/apps/${FLATPAK_ID}.png
-      - install -Dm644 /usr/lib/sdk/python3/lib/python3.10/idlelib/Icons/idle_256.png ${FLATPAK_DEST}/share/icons/hicolor/256x256/apps/${FLATPAK_ID}.png
+      - install -Dm644 /usr/lib/sdk/python3/lib/python3.12/idlelib/Icons/idle_16.png ${FLATPAK_DEST}/share/icons/hicolor/16x16/apps/${FLATPAK_ID}.png
+      - install -Dm644 /usr/lib/sdk/python3/lib/python3.12/idlelib/Icons/idle_32.png ${FLATPAK_DEST}/share/icons/hicolor/32x32/apps/${FLATPAK_ID}.png
+      - install -Dm644 /usr/lib/sdk/python3/lib/python3.12/idlelib/Icons/idle_48.png ${FLATPAK_DEST}/share/icons/hicolor/48x48/apps/${FLATPAK_ID}.png
+      - install -Dm644 /usr/lib/sdk/python3/lib/python3.12/idlelib/Icons/idle_256.png ${FLATPAK_DEST}/share/icons/hicolor/256x256/apps/${FLATPAK_ID}.png
       - install -Dm644 org.freedesktop.Sdk.Extension.python3.idle3.appdata.xml ${FLATPAK_DEST}/share/appdata/
       - install -Dm644 org.freedesktop.Sdk.Extension.python3.idle3.desktop ${FLATPAK_DEST}/share/applications/
