@@ -54,8 +54,6 @@ modules:
           stable-only: true
           url-template: https://prdownloads.sourceforge.net/tcl/tk$version-src.tar.gz
 
-  - shared-modules/pygtk/pygtk.json
-
   - name: python
     config-opts:
       - --enable-optimizations
