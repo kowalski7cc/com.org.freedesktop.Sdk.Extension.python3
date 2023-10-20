@@ -1,7 +1,7 @@
 REPO ?= build/flatpak-repo
 STATE ?= build/flatpak-builder
 TARGET ?= build/flatpak-target 
-APP_ID = com.org.freedesktop.Sdk.Extension.python3
+APP_ID = org.freedesktop.Sdk.Extension.python3
 ARCH ?= $(shell arch)
 
 all:
